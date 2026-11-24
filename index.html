@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VETNOVA — Clínica Veterinaria | Sistema de Gestión</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="vetnova-body">
+
+  <!-- Pantalla de arranque / bienvenida -->
+  <div id="splash-screen" class="splash-screen" aria-hidden="false">
+    <div class="splash-content">
+      <div class="brand-logo brand-logo--lg" aria-label="Logo VETNOVA Clínica Veterinaria">
+        <svg viewBox="0 0 220 140" class="vetnova-svg" role="img" aria-label="VETNOVA">
+          <!-- Letra V estilizada con perro y gato -->
+          <path d="M24 14 H56 L84 96 L104 42 H76 L84 22 H132 L92 126 H62 L24 14 Z" fill="#3EC6A8" />
+          <path d="M108 14 H166 L154 34 H122 L114 56 C125 50 138 52 146 60 C154 68 156 81 151 92 L134 126 H104 L126 78 C129 72 125 66 118 66 C112 66 107 70 105 76 L94 104 L84 78 L108 14 Z" fill="#FFFFFF" />
+          <!-- Silueta perro superior izquierda -->
+          <path d="M58 26 C64 20 75 21 81 26 L88 24 L86 32 C90 35 91 41 87 45 L77 45 L72 56 L58 48 Z" fill="#3EC6A8" />
+          <!-- Silueta gato inferior derecha -->
+          <path d="M114 74 L118 64 L122 72 C127 72 132 76 132 82 L128 98 L112 98 Z" fill="#FFFFFF" />
+          <!-- Cruz celeste con huella -->
+          <path d="M154 88 H166 V76 H178 V88 H190 V100 H178 V112 H166 V100 H154 Z" fill="#5BC6E8" />
+          <circle cx="172" cy="91" r="2.2" fill="#0F294A" />
+          <circle cx="167.5" cy="94" r="1.5" fill="#0F294A" />
+          <circle cx="172" cy="93.5" r="1.5" fill="#0F294A" />
+          <circle cx="176.5" cy="94" r="1.5" fill="#0F294A" />
+          <path d="M168.5 98.5 C168.5 96.5 175.5 96.5 175.5 98.5 C175.5 100.5 168.5 100.5 168.5 98.5 Z" fill="#0F294A" />
+        </svg>
+      </div>
+      <div class="splash-brand-text">
+        <span class="splash-title">VET<strong>NOVA</strong></span>
+        <span class="splash-subtitle">CLÍNICA VETERINARIA</span>
+      </div>
+      <div class="splash-loader">
+        <span class="splash-loader-bar"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenedor principal SPA -->
+  <div id="app-shell" class="app-shell">
+
+    <!-- Barra lateral de navegación -->
+    <aside id="sidebar" class="sidebar" aria-label="Navegación principal">
+      <div class="sidebar-header">
+        <a href="#sec-dashboard" class="brand-link" data-section="sec-dashboard">
+          <div class="brand-logo brand-logo--sm">
+            <svg viewBox="0 0 220 140" class="vetnova-svg" role="img" aria-label="VETNOVA">
+              <path d="M24 14 H56 L84 96 L104 42 H76 L84 22 H132 L92 126 H62 L24 14 Z" fill="#3EC6A8" />
+              <path d="M108 14 H166 L154 34 H122 L114 56 C125 50 138 52 146 60 C154 68 156 81 151 92 L134 126 H104 L126 78 C129 72 125 66 118 66 C112 66 107 70 105 76 L94 104 L84 78 L108 14 Z" fill="#FFFFFF" />
+              <path d="M58 26 C64 20 75 21 81 26 L88 24 L86 32 C90 35 91 41 87 45 L77 45 L72 56 L58 48 Z" fill="#3EC6A8" />
+              <path d="M114 74 L118 64 L122 72 C127 72 132 76 132 82 L128 98 L112 98 Z" fill="#FFFFFF" />
+              <path d="M154 88 H166 V76 H178 V88 H190 V100 H178 V112 H166 V100 H154 Z" fill="#5BC6E8" />
+              <circle cx="172" cy="91" r="2.2" fill="#0F294A" />
+              <circle cx="167.5" cy="94" r="1.5" fill="#0F294A" />
+              <circle cx="172" cy="93.5" r="1.5" fill="#0F294A" />
+              <circle cx="176.5" cy="94" r="1.5" fill="#0F294A" />
+              <path d="M168.5 98.5 C168.5 96.5 175.5 96.5 175.5 98.5 C175.5 100.5 168.5 100.5 168.5 98.5 Z" fill="#0F294A" />
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">VET<strong>NOVA</strong></span>
+            <span class="brand-tagline">CLÍNICA VETERINARIA</span>
+          </div>
+        </a>
+        <button type="button" id="btn-close-sidebar" class="btn-icon mobile-only" aria-label="Cerrar menú">✕</button>
+      </div>
+
+      <nav class="nav-menu">
+        <button type="button" class="nav-item active" data-section="sec-dashboard">
+          <span class="nav-step">01</span>
+          <span class="nav-label">Dashboard y Alertas</span>
+        </button>
+        <button type="button" class="nav-item" data-section="sec-clientes">
+          <span class="nav-step">02</span>
+          <span class="nav-label">Clientes y Mascotas</span>
+        </button>
+        <button type="button" class="nav-item" data-section="sec-catalogo">
+          <span class="nav-step">03</span>
+          <span class="nav-label">Catálogo y Servicios</span>
+        </button>
+        <button type="button" class="nav-item" data-section="sec-turnos">
+          <span class="nav-step">04</span>
+          <span class="nav-label">Turnos, Boxes y Pedidos</span>
+        </button>
+        <button type="button" class="nav-item" data-section="sec-stock">
+          <span class="nav-step">05</span>
+          <span class="nav-label">Stock, Compras y Lotes</span>
+        </button>
+        <button type="button" class="nav-item" data-section="sec-facturacion">
+          <span class="nav-step">06</span>
+          <span class="nav-label">Facturación y Caja</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="storage-badge">
+          <span class="status-dot"></span>
+          <span>Persistencia Local (localStorage)</span>
+        </div>
+        <button type="button" id="btn-limpiar-storage" class="btn btn-outline-danger btn-sm">
+          Vaciar almacenamiento local
+        </button>
+      </div>
+    </aside>
+
+    <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+
+    <!-- Área de contenido principal -->
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button type="button" id="btn-open-sidebar" class="btn-icon mobile-only" aria-label="Abrir menú">☰</button>
+          <div>
+            <h1 id="topbar-title" class="topbar-title">Dashboard y Alertas</h1>
+            <p id="topbar-subtitle" class="topbar-subtitle">Resumen operativo, vencimientos, stock mínimo, turnos y refuerzos</p>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <span id="current-date-display" class="date-pill"></span>
+        </div>
+      </header>
+
+      <main id="spa-container" class="spa-container">
+
+        <!-- SECCIÓN 1: DASHBOARD Y CENTRO DE ALERTAS -->
+        <section id="sec-dashboard" class="spa-section active" data-title="Dashboard y Alertas" data-subtitle="Resumen operativo, vencimientos, stock mínimo, turnos y refuerzos">
+          <div class="waterfall-flow">
+            <div class="waterfall-block" id="dash-kpis-block">
+              <div class="block-header">
+                <h2>Indicadores del día</h2>
+                <span class="block-tag">Tiempo real</span>
+              </div>
+              <div id="dash-kpis-grid" class="kpi-grid"></div>
+            </div>
+
+            <div class="waterfall-block" id="dash-acciones-block">
+              <div class="block-header">
+                <h2>Accesos rápidos</h2>
+                <span class="block-tag">Gestión directa</span>
+              </div>
+              <div id="dash-quick-actions" class="quick-actions-row"></div>
+            </div>
+
+            <div class="waterfall-block" id="dash-alertas-block">
+              <div class="block-header">
+                <h2>Centro de alertas y vencimientos</h2>
+                <span class="block-tag">15 días · Stock · 24 hs · Refuerzos</span>
+              </div>
+              <div id="dash-alertas-container" class="waterfall-subgrid"></div>
+            </div>
+
+            <div class="waterfall-block" id="dash-actividad-block">
+              <div class="block-header">
+                <h2>Actividad reciente</h2>
+                <span class="block-tag">Últimos movimientos</span>
+              </div>
+              <div id="dash-actividad-container" class="list-stack"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 2: GESTIÓN DE CLIENTES Y MASCOTAS -->
+        <section id="sec-clientes" class="spa-section" data-title="Clientes y Mascotas" data-subtitle="ABM de tutores, domicilios, datos fiscales, mascotas e historial">
+          <div class="waterfall-flow">
+            <div class="waterfall-block">
+              <div class="block-header">
+                <h2>Tutores y clientes</h2>
+                <div class="block-actions">
+                  <button type="button" class="btn btn-primary" data-open-modal="modal-tutor">+ Nuevo tutor</button>
+                  <button type="button" class="btn btn-secondary" data-open-modal="modal-mascota">+ Nueva mascota</button>
+                </div>
+              </div>
+              <div id="clientes-filtros" class="filter-bar"></div>
+              <div id="tutores-listado" class="waterfall-subgrid"></div>
+            </div>
+
+            <div class="waterfall-block">
+              <div class="block-header">
+                <h2>Mascotas registradas y ficha clínica</h2>
+                <span class="block-tag">Especie · Raza · Peso · Alergias · Observaciones</span>
+              </div>
+              <div id="mascotas-listado" class="waterfall-subgrid"></div>
+            </div>
+
+            <div class="waterfall-block">
+              <div class="block-header">
+                <h2>Historial de compras y atenciones</h2>
+                <span class="block-tag">Vinculación por tutor y mascota</span>
+              </div>
+              <div id="clientes-historial-container" class="list-stack"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 3: REGISTRO Y CONTROL DE PRODUCTOS, SERVICIOS Y COMBOS -->
+        <section id="sec-catalogo" class="spa-section" data-title="Catálogo y Servicios" data-subtitle="6 categorías, presentaciones, insumos asociados, combos e historial de precios">
+          <div class="waterfall-flow">
+            <div class="waterfall-block">
+              <div class="block-header">
+                <h2>Productos y servicios</h2>
+                <div class="block-actions">
+                  <button type="button" class="btn btn-primary" data-open-modal="modal-item-catalogo">+ Nuevo ítem</button>
+                  <button type="button" class="btn btn-secondary" data-open-modal="modal-combo">+ Nuevo combo</button>
+                </div>
+              </div>
+              <div id="catalogo-filtros" class="filter-bar"></div>
+              <div id="catalogo-listado" class="waterfall-subgrid"></div>
+            </div>
+
+            <div class="waterfall-block">
+              <div class="block-header">
+                <h2>Combos promocionales</h2>
+                <span class="block-tag">Promociones activas e inactivas</span>
+              </div>
+              <div id="combos-listado" class="waterfall-subgrid"></div>
+            </div>
+
+            <div class="waterfall-block">
+              <div class="block-header">
+                <h2>Historial de precios</h2>
+                <span class="block-tag">Registro cronológico de ajustes</span>
+              </div>
+              <div id="historial-precios-listado" class="list-stack"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 4: TURNOS, BOXES Y PEDIDOS -->
+        <section id="sec-turnos" class="spa-section" data-title="Turnos, Boxes y Pedidos" data-subtitle="Estado de boxes, agenda de turnos y seguimiento de pedidos de mostrador y delivery">
+          <div class="waterfall-flow">
+            <div class="waterfall-block">
+              <div class="block-header">
+                <h2>Boxes y consultorios</h2>
+                <button type="button" class="btn btn-secondary btn-sm" data-open-modal="modal-box">+ Nuevo box</button>
+              </div>
+              <div id="boxes-listado" class="boxes-grid"></div>
+            </div>
+
+            <div class="waterfall-block">
+              <div class="block-header">
+                <h2>Agenda de turnos</h2>
+                <button type="button" class="btn btn-primary" data-open-modal="modal-turno">+ Nuevo turno</button>
+              </div>
+              <div id="turnos-filtros" class="filter-bar"></div>
+              <div id="turnos-listado" class="list-stack"></div>
+            </div>
+
+            <div class="waterfall-block">
+              <div class="block-header">
+                <h2>Pedidos de mostrador y delivery</h2>
+                <button type="button" class="btn btn-primary" data-open-modal="modal-pedido">+ Nuevo pedido</button>
+              </div>
+              <div id="pedidos-filtros" class="filter-bar"></div>
+              <div id="pedidos-listado" class="list-stack"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 5: STOCK, COMPRAS Y LOTES -->
+        <section id="sec-stock" class="spa-section" data-title="Stock, Compras y Lotes" data-subtitle="Lotes, vencimientos, compras a droguerías y descuento automático de insumos">
+          <div class="waterfall-flow">
+            <div class="waterfall-block">
+              <div class="block-header">
+                <h2>Control de stock y lotes</h2>
+                <div class="block-actions">
+                  <button type="button" class="btn btn-primary" data-open-modal="modal-lote">+ Nuevo lote / ajuste</button>
+                  <button type="button" class="btn btn-secondary" data-open-modal="modal-compra">+ Registrar compra</button>
+                </div>
+              </div>
+              <div id="stock-filtros" class="filter-bar"></div>
+              <div id="stock-lotes-listado" class="list-stack"></div>
+            </div>
+
+            <div class="waterfall-block">
+              <div class="block-header">
+                <h2>Compras a droguerías y distribuidoras</h2>
+                <span class="block-tag">Ingresos, costos y comprobantes</span>
+              </div>
+              <div id="compras-listado" class="list-stack"></div>
+            </div>
+
+            <div class="waterfall-block">
+              <div class="block-header">
+                <h2>Descuentos automáticos (servicios y venta fraccionada)</h2>
+                <span class="block-tag">Trazabilidad de salidas</span>
+              </div>
+              <div id="descuentos-listado" class="list-stack"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 6: FACTURACIÓN Y CAJA -->
+        <section id="sec-facturacion" class="spa-section" data-title="Facturación y Caja" data-subtitle="Comprobantes, cobro multimedios, edición de ingresos y cierre de caja diario">
+          <div class="waterfall-flow">
+            <div class="waterfall-block">
+              <div class="block-header">
+                <h2>Emisión de comprobantes</h2>
+                <button type="button" class="btn btn-primary" data-open-modal="modal-comprobante">+ Nuevo comprobante</button>
+              </div>
+              <div id="comprobantes-listado" class="list-stack"></div>
+            </div>
+
+            <div class="waterfall-block">
+              <div class="block-header">
+                <h2>Cobro multimedios y movimientos</h2>
+                <span class="block-tag">Efectivo · Débito · Crédito · Transferencia</span>
+              </div>
+              <div id="cobros-resumen-listado" class="list-stack"></div>
+            </div>
+
+            <div class="waterfall-block">
+              <div class="block-header">
+                <h2>Cierre de caja diario</h2>
+                <button type="button" class="btn btn-secondary" data-open-modal="modal-cierre-caja">Registrar cierre diario</button>
+              </div>
+              <div id="cierre-caja-actual" class="waterfall-subgrid"></div>
+              <div id="cierres-caja-historial" class="list-stack"></div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Contenedor dinámico de modales -->
+  <div id="modal-overlay" class="modal-overlay" aria-hidden="true">
+    <div id="modal-dialog" class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-header">
+        <h3 id="modal-title" class="modal-title"></h3>
+        <button type="button" id="btn-close-modal" class="btn-icon" aria-label="Cerrar ventana">✕</button>
+      </div>
+      <div id="modal-body" class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Contenedor de notificaciones toast -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Carga modular de scripts -->
+  <script src="storage.js"></script>
+  <script src="relations.js"></script>
+  <script src="functions.js"></script>
+  <script src="sections.js"></script>
+  <script src="modales.js"></script>
+  <script src="function_modales.js"></script>
+  <script src="animations.js"></script>
+</body>
+</html>
